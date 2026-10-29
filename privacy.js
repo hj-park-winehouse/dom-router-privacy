@@ -9,7 +9,7 @@
     if(!['ko','en'].includes(lang))lang='ko';save('domrouter-privacy-lang',lang);
     const id=lang==='ko'?'korean':'english';document.documentElement.lang=lang;document.body.classList.toggle('korean',lang==='ko');
     $$('article').forEach(a=>a.hidden=a.id!==id);$$('[data-en][data-ko]').forEach(e=>e.textContent=e.dataset[lang]);
-    $('#language').textContent=lang==='ko'?'English':'한국어';$('#policy-nav').href='#'+id;document.title=(lang==='ko'?'개인정보처리방침':'Privacy Policy')+' | DOM Router Docs';
+    $('#language').textContent=lang==='ko'?'English':'한국어';$('#policy-nav').href='#'+id;document.title=(lang==='ko'?'개인정보처리방침':'Privacy Policy')+' | DoriDori Docs';
     observer?.disconnect();const toc=$('#toc-links');toc.replaceChildren();
     const sections=$$('#'+id+' section');sections.forEach(s=>{const a=document.createElement('a');a.href='#'+s.id;a.textContent=s.querySelector('h2').textContent.replace(/^\d\.\s*/,'');toc.append(a)});
     observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting)$$('#toc-links a').forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))},{rootMargin:'-100px 0px -60% 0px'});sections.forEach(s=>observer.observe(s));
